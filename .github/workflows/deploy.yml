@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_KEY }}
         source: "."
-        target: "/root/posts_api"
+        target: "/root/nest-blog-backend-api"
 
     - name: Run deploy commands on VPS
       uses: appleboy/ssh-action@v1.0.3
@@ -28,7 +28,7 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_KEY }}
         script: |
-          cd /root/posts_api
+          cd /opt/posts_api
           
           # Matar el proceso que está usando el puerto 3000
           echo "Matar proceso en el puerto 3000..."
