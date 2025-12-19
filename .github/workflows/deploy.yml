@@ -29,7 +29,7 @@ jobs:
         key: ${{ secrets.VPS_KEY }}
         script: |
           set -e
-          cd /opt/posts_api
+          cd /root/nest-blog-backend-api
 
           sudo lsof -t -i:3000 | xargs -r sudo kill -9 || true
 
@@ -38,7 +38,7 @@ jobs:
           npm install
           npm run build
 
-          pm2 stop nestjs-posts-api || true
-          pm2 delete nestjs-posts-api || true
-          pm2 start dist/main.js --name nestjs-posts-api
+          pm2 stop nest-blog-backend-api || true
+          pm2 delete nest-blog-backend-api || true
+          pm2 start dist/main.js --name nest-blog-backend-api
           pm2 save
